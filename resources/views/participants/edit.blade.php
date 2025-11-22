@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="text-2xl font-bold mb-6">Edit Peserta</h1>
+<h1 class="text-2xl font-bold mb-6">Edit Participant</h1>
 
 <form method="POST" action="{{ route('participants.update', $participant->id) }}" class="space-y-4">
     @csrf @method('PUT')

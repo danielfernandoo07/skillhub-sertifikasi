@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 use App\Models\Participant;
 use Illuminate\Database\Seeder;
 

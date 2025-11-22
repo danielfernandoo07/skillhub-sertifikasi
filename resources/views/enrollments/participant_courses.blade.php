@@ -1,37 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Enroll Participant to Course</h1>
+<h1 class="text-2xl font-bold mb-4">Participant</h1>
 
-@if (session('success'))
-    <div class="bg-green-100 p-3 rounded mb-4 text-green-800">
-        {{ session('success') }}
-    </div>
-@endif
+<div class="bg-white p-4 shadow rounded">
+    <p><strong>Name:</strong> {{ $participant->name }}</p>
+    <p><strong>Email:</strong> {{ $participant->email }}</p>
+    <p><strong>Phone:</strong> {{ $participant->phone }}</p>
+</div>
 
-<form method="POST" action="{{ route('enrollments.store') }}" class="space-y-4 max-w-lg">
-    @csrf
+<h2 class="text-xl font-bold mt-6 mb-2">Enrolled Courses</h2>
+<div class="bg-white p-4 shadow rounded">
+    @if ($courses->isEmpty())
+        <p class="text-gray-500 italic">This participant is not enrolled in any course.</p>
+    @else
+        <ul class="space-y-2">
+            @foreach ($courses as $course)
+                <li class="flex items-center justify-between bg-gray-100 p-3 rounded">
+                    <span>{{ $course->name }}</span>
 
-    <div>
-        <label class="block mb-1 font-semibold">Participant</label>
-        <select name="participant_id" class="w-full p-2 border rounded">
-            @foreach($participants as $p)
-                <option value="{{ $p->id }}">{{ $p->name }}</option>
+                    <form action="{{ route('enrollments.destroy', $course->pivot->id) }}"
+                          method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" 
+                                class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm">
+                            Cancel
+                        </button>
+                    </form>
+                </li>
             @endforeach
-        </select>
-    </div>
+        </ul>
+    @endif
+</div>
 
-    <div>
-        <label class="block mb-1 font-semibold">Course</label>
-        <select name="course_id" class="w-full p-2 border rounded">
-            @foreach($courses as $c)
-                <option value="{{ $c->id }}">{{ $c->name }}</option>
-            @endforeach
-        </select>
-    </div>
-
-    <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-        Enroll
-    </button>
-</form>
+<a href="{{ route('participants.index') }}" class="mt-4 inline-block text-blue-600">← Back</a>
 @endsection

@@ -21,7 +21,9 @@ class Course extends Model
 
     public function participants()
     {
-        return $this->belongsToMany(Participant::class, 'enrollments');
+        return $this->belongsToMany(Participant::class, 'enrollments')
+            ->withPivot('id')
+            ->withTimestamps();
     }
 }
 

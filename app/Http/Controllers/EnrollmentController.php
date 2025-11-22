@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class EnrollmentController extends Controller
 {
-    // Form
     public function create() {
         $participants = Participant::all();
         $courses = Course::all();
@@ -32,14 +31,14 @@ class EnrollmentController extends Controller
         return redirect()->back()->with('success', 'Enrollment created successfully!');
     }
 
-    // List course dari peserta
+    // List course from participant
     public function participantCourses(Participant $participant)
     {
         $courses = $participant->courses;
         return view('enrollments.participant_courses', compact('participant', 'courses'));
     }
 
-    // List peserta pada course
+    // List participants in a course
     public function courseParticipants(Course $course)
     {
         $participants = $course->participants;
