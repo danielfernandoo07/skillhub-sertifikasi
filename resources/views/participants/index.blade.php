@@ -1,16 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Participants List</h1>
 
-<a href="{{ route('participants.create') }}" 
-   class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">
+<div class= "flex justify-between mb-4">
+    <h1 class="text-2xl font-bold">Participants List</h1>
+    <a href="{{ route('participants.create') }}" 
+   class="bg-blue-700 text-white px-4 py-2 rounded mb-4 inline-block">
    + Add Participant
 </a>
+</div>
 
 <table class="min-w-full bg-white shadow rounded">
     <thead>
-        <tr class="border-b">
+        <tr class="bg-gray-200 text-left">
             <th class="p-3 text-left">Name</th>
             <th class="p-3 text-left">Email</th>
             <th class="p-3">Actions</th>
@@ -26,7 +28,7 @@
                 <a href="{{ route('participants.edit', $p->id) }}" class="text-yellow-500">Edit</a>
                 <form action="{{ route('participants.destroy', $p->id) }}" method="POST" class="inline">
                     @csrf @method('DELETE')
-                    <button class="text-red-500">Delete</button>
+                    <button class="text-red-600" onclick="return confirm('Delete this participant?')">Delete</button>
                 </form>
             </td>
         </tr>

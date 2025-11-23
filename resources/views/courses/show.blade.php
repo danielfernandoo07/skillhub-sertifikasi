@@ -18,7 +18,7 @@
 @forelse ($participants as $p)
     <li class="p-2 bg-gray-100 rounded">{{ $p->name }}</li>
 @empty
-    <p class="text-gray-500 italic">Belum ada peserta terdaftar di kelas ini.</p>
+    <p class="text-gray-500 italic">There are no participants enrolled in this course.</p>
 @endforelse
 </ul>
 </div>

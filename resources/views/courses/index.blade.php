@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex justify-between mb-4">
     <h1 class="text-2xl font-bold">Courses</h1>
-    <a href="{{ route('courses.create') }}" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Add Course</a>
+    <a href="{{ route('courses.create') }}" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">+ Add Course</a>
 </div>
 
 <table class="w-full bg-white rounded shadow">

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app')
 
 @section('content')
 <h1 class="text-2xl font-bold mb-4">Participant</h1>
@@ -35,4 +35,4 @@
 </div>
 
 <a href="{{ route('participants.index') }}" class="mt-4 inline-block text-blue-600">← Back</a>
-@endsection
+@endsection -->

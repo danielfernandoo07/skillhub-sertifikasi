@@ -9,7 +9,7 @@ Route::get('/', function () {
     return redirect()->route('participants.index');
 })->name('dashboard');
 
-// Route participants dan courses
+// Route participants and courses
 Route::resource('participants', ParticipantController::class);
 Route::resource('courses', CourseController::class);
 
@@ -19,9 +19,9 @@ Route::post('/enrollments', [EnrollmentController::class, 'store'])->name('enrol
 
 Route::get('/participants/{participant}/courses', [EnrollmentController::class, 'participantCourses'])->name('participants.courses');
 
-// List peserta pada course tertentu
+// List participants in a specific course
 Route::get('/courses/{course}/participants', [EnrollmentController::class, 'courseParticipants'])->name('courses.participants');
 
-// Hapus enrollment
+// Delete enrollment
 Route::delete('/enrollments/{enrollment}', [EnrollmentController::class, 'destroy'])->name('enrollments.destroy');
 
